@@ -69,6 +69,22 @@ get '/players/:id' do
   erb :player_details
 end
 
+get '/players/delete' do
+  erb :delete
+end
+
+post '/players/delete/:id' do
+  @id = params["id"]
+  player = Player.find_by(id: @id)
+
+  if player
+    player.delete
+    redirect "/"
+  else
+    erb :not_found
+  end
+end
+
 get '/teams/new' do
   erb :team_form
 end

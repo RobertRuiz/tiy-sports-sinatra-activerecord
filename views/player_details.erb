@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>TIY Sports - Player</title>
+    <style media="screen">
+      ul {
+        list-style: none;
+      }
+    </style>
   </head>
   <body>
     <% if @player %>
@@ -17,6 +22,13 @@
       <h1>No Player Found</h1>
     <% end %>
 
-    <a href="/">Home</a>
+    <form action="/players/delete/<%= @player.id %>" method="post">
+      <input type="submit" value="Delete this player">
+    </form>
+
+    <p>
+    <a href="/">or go back Home</a>
+  </p>
+
   </body>
 </html>

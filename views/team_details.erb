@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>TIY Sports - Team</title>
+    <style media="screen">
+      ul {
+        list-style: none;
+      }
+    </style>
   </head>
   <body>
     <% if @team %>
@@ -16,6 +21,13 @@
       <h1>No Team Found</h1>
     <% end %>
 
-    <a href="/">Home</a>
+    <form action="/teams/delete/<%= @pteam.id %>" method="post">
+      <input type="submit" value="Delete this team">
+    </form>
+
+    <p>
+    <a href="/">or go back Home</a>
+    </p>
+
   </body>
 </html>

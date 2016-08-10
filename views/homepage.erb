@@ -3,6 +3,11 @@
   <head>
     <meta charset="utf-8">
     <title>TIY Sports</title>
+    <style media="screen">
+      ul {
+        list-style: none;
+      }
+    </style>
   </head>
   <body>
     <h1>Welcome to TIY Sports</h1>
@@ -15,12 +20,15 @@
     <% end %>
     </ul>
 
-    <a href="/players/new">Add Player</a>
+    <p>
+    <a href="/players/new">Add a Player</a>
+    </p>
 
-    <form action="/players/search" method="post">
-      <input type="text" name="name" value="">
-      <input type="submit" value="Search">
-    </form>
+      Search or Delete a Player
+      <form action="/players/search" method="post">
+        <input type="text" name="name" value="">
+        <input type="submit" value="Search">
+      </form>
 
     <!-- List of all of the teams here -->
     <h2>Teams</h2>
@@ -30,8 +38,11 @@
     <% end %>
     </ul>
 
-    <a href="/teams/new">Add a Team</a>
+    <p>
+      <a href="/teams/new">Add a Team</a>
+    </p>
 
+    Search or Delete a Team
     <form action="/teams/search" method="post">
       <input type="text" name="name" value="">
       <input type="submit" value="Search">

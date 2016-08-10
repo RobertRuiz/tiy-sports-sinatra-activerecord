@@ -2,6 +2,10 @@ require 'sqlite3'
 require 'active_record'
 require 'sinatra'
 
+if development?
+  require 'sinatra/reloader'
+end
+
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 ActiveRecord::Base.establish_connection(
   adapter: "sqlite3",
@@ -65,6 +69,27 @@ get '/players/:id' do
   erb :player_details
 end
 
+get '/teams/new' do
+  erb :team_form
+end
+
+post '/teams/create' do
+  team = Team.create(params)
+
+  redirect "/teams/#{team.id}"
+end
+
+post '/teams/search' do
+  @name = params["name"]
+
+  team = Teams.where("name like '%#{@name}%'")
+  if team
+    redirect "/teams/#{team.id}"
+  else
+    erb :not_found
+  end
+end
+
 get '/teams/:id' do
   team_id = params[:id]
   @team = Team.find_by(id: team_id)
@@ -72,7 +97,9 @@ get '/teams/:id' do
   erb :team_details
 end
 
+get '/teams/:id' do
+  team_id = params[:id]
+  @team = Team.find_by(id: team_id)
 
-
-
-#
+  erb :team_details
+end

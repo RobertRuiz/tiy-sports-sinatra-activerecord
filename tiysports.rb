@@ -82,19 +82,12 @@ end
 post '/teams/search' do
   @name = params["name"]
 
-  team = Teams.where("name like '%#{@name}%'")
+  team = Team.where("name like '%#{@name}%'").first
   if team
-    redirect "/teams/#{team.id}"
+    redirect "/team/#{team.id}"
   else
     erb :not_found
   end
-end
-
-get '/teams/:id' do
-  team_id = params[:id]
-  @team = Team.find_by(id: team_id)
-
-  erb :team_details
 end
 
 get '/teams/:id' do

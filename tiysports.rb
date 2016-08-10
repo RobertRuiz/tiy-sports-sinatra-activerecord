@@ -100,7 +100,23 @@ post '/teams/search' do
 
   team = Team.where("name like '%#{@name}%'").first
   if team
-    redirect "/team/#{team.id}"
+    redirect "/teams/#{team.id}"
+  else
+    erb :not_found
+  end
+end
+
+get '/teams/delete' do
+  erb :delete
+end
+
+post '/teams/delete/:id' do
+  @id = params["id"]
+  team = Team.find_by(id: @id)
+
+  if team
+    team.delete
+    redirect "/"
   else
     erb :not_found
   end

@@ -86,7 +86,7 @@ post '/players/delete/:id' do
 end
 
 get '/players/update' do
-  erb :player_form
+  erb :player_update
 end
 
 post '/players/update/:id' do

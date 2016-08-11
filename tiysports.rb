@@ -86,7 +86,7 @@ post '/players/delete/:id' do
 end
 
 get '/players/update' do
-  erb :update
+  erb :player_form
 end
 
 post '/players/update/:id' do
@@ -123,7 +123,7 @@ post '/teams/search' do
 end
 
 get '/teams/delete' do
-  erb :delete
+  erb :team_form
 end
 
 post '/teams/delete/:id' do

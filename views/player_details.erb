@@ -26,6 +26,10 @@
       <input type="submit" value="Delete this player">
     </form>
 
+    <form action="/players/update/<%= @player.id %>" method="post">
+      <input type="submit" value="Update this player">
+    </form>
+
     <p>
     <a href="/">or go back Home</a>
   </p>

@@ -25,6 +25,10 @@
       <input type="submit" value="Delete this team">
     </form>
 
+    <form action="/teams/update/<%= @team.id %>" method="post">
+      <input type="submit" value="Update this Team">
+    </form>
+
     <p>
     <a href="/">or go back Home</a>
     </p>

@@ -85,6 +85,22 @@ post '/players/delete/:id' do
   end
 end
 
+get '/players/update' do
+  erb :update
+end
+
+post '/players/update/:id' do
+  @id = params["id"]
+  player = Player.find_by(id: @id)
+
+  if player
+    player.update
+    redirect "/"
+  else
+    erb :not_found
+  end
+end
+
 get '/teams/new' do
   erb :team_form
 end
@@ -116,6 +132,22 @@ post '/teams/delete/:id' do
 
   if team
     team.delete
+    redirect "/"
+  else
+    erb :not_found
+  end
+end
+
+get '/teams/update' do
+  erb :update
+end
+
+post '/teams/update/:id' do
+  @id = params["id"]
+  team = Team.find_by(id: @id)
+
+  if team
+    team.update
     redirect "/"
   else
     erb :not_found
